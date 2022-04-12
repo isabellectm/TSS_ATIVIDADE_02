@@ -33,7 +33,8 @@ class Operacoes:
 
         return elemento_atual
 
-    def determinar_tipo_triangulo(self, a: int, b: int, c: int):
+    @staticmethod
+    def determinar_tipo_triangulo(a: int, b: int, c: int):
         tipo = 'ESCALENO'
 
         if a <= 0 or b <= 0 or c <= 0:
