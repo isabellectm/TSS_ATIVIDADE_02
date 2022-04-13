@@ -1,8 +1,10 @@
 import unittest
-from SuperCodigo.operacoes import Operacoes
+from super_codigo import Operacoes
 
 
 class TesteOperacoes(unittest.TestCase):
+
+    # ---------- >>> TESTES TRINGULOS
 
     def test_triangulo_inexistente_1(self):
         op = Operacoes()
@@ -40,6 +42,8 @@ class TesteOperacoes(unittest.TestCase):
 
         self.assertEqual(tipo_triangulo, 'ESCALENO')
 
+    # ---------- >>> TESTES FICONACCI
+
     def test_fibonacci_failure(self):
         op = Operacoes()
         self.assertRaises(Exception, op.obter_elemento_fibonacci, 0)
@@ -55,6 +59,28 @@ class TesteOperacoes(unittest.TestCase):
         elemento_fibonacci = op.obter_elemento_fibonacci(6)
 
         self.assertEqual(elemento_fibonacci, 8)
+
+    # ---------- >>> TESTES CADEIA DE CARACTERES
+
+    def test_posicao_caractere_cadeia_failure(self):
+        op = Operacoes()
+        self.assertRaises(Exception, op.obter_posicao_caractere, ('a', 'abcdefghijklmnopqrstuvwxyz'))
+
+    def test_posicao_caractere_caractere_failure(self):
+        op = Operacoes()
+        self.assertRaises(Exception, op.obter_posicao_caractere, ('abc', 'abcdefghij'))
+
+    def test_posicao_caractere_caractere_found(self):
+        op = Operacoes()
+        posicao_caractere = op.obter_posicao_caractere('abcdefghij', 'c')
+
+        self.assertEqual(posicao_caractere, 3)
+
+    def test_posicao_caractere_caractere_not_found(self):
+        op = Operacoes()
+        posicao_caractere = op.obter_posicao_caractere('abcdefghij', 'z')
+
+        self.assertEqual(posicao_caractere, -1)
 
 
 if __name__ == '__main__':
